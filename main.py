@@ -98,7 +98,7 @@ def main(genomes = [], config = []):
             (x, y) = car.move(road,t)
 
             #t служит для предотвращения удаления машин в первых кадрах tot (в первых кадрах getCollision () всегда возвращает true)
-            #удалить машину, если она задела край дороги и сильно отстала от лидера или роезала вниз или едет слишком медленно
+            #удалить машину, если она задела край дороги или сильно отстала от лидера или поехала вниз или едет слишком медленно
             if t>10 and (car.detectCollision(road) or y > world.getBestCarPos()[1] + BAD_GENOME_TRESHOLD or y>y_old or car.vel < 0.1): 
                 ge[i].fitness -= 1 #пометить сеть как менее подходящую
                 cars.pop(i)
@@ -150,3 +150,6 @@ if __name__ == "__main__":
     local_dir = os.path.dirname(__file__) #определить директорию
     config_path = os.path.join(local_dir, "config_file.txt") #определить конфигурационный файл
     run(config_path) #запуситить neat
+
+
+#нужны описания, инструкция, ссылка
